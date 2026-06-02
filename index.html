@@ -3,45 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZMP App QA Test Page</title>
+    <title>ZMP App — QA Test Page</title>
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 0 20px;
-            background: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 48px 20px;
+            color: #1a1a1a;
         }
-        .info-box {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 20px 24px;
-            margin-bottom: 30px;
+
+        header {
+            width: 100%;
+            max-width: 760px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
         }
-        h1 { color: #333; }
-        code {
-            background: #eee;
-            padding: 2px 6px;
-            border-radius: 3px;
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: #0052cc;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .logo svg { width: 22px; height: 22px; fill: #fff; }
+
+        header h1 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111;
+        }
+
+        header p {
             font-size: 13px;
+            color: #666;
+            margin-top: 2px;
         }
-        .tip { color: #0066cc; font-weight: bold; }
+
+        .card {
+            width: 100%;
+            max-width: 760px;
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #e2e5ea;
+            padding: 24px 28px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 4px rgba(0,0,0,.05);
+        }
+
+        .card-title {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 14px;
+        }
+
+        .alert {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 14px;
+        }
+
+        .alert-icon {
+            font-size: 17px;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .alert p { font-size: 14px; line-height: 1.6; color: #1e3a5f; }
+
+        code {
+            background: #e8f0fe;
+            color: #1a56db;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            font-size: 12.5px;
+        }
+
+        .steps { list-style: none; counter-reset: steps; display: flex; flex-direction: column; gap: 10px; }
+
+        .steps li {
+            counter-increment: steps;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .steps li::before {
+            content: counter(steps);
+            min-width: 24px;
+            height: 24px;
+            background: #0052cc;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .feature-chip {
+            background: #f8f9fb;
+            border: 1px solid #e2e5ea;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .feature-chip span {
+            display: block;
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 3px;
+            font-weight: 600;
+        }
+
+        footer {
+            margin-top: 12px;
+            font-size: 12px;
+            color: #aaa;
+        }
     </style>
 </head>
 <body>
 
-    <div class="info-box">
-        <h1>ZMP App — QA Test Page</h1>
-        <p>
-            <span class="tip">Important:</span>
-            Always add <code>?boxqamode</code> to the URL before testing.<br>
-            Example: <code>https://your-site.netlify.app/?boxqamode</code>
-        </p>
-        <p>Open <strong>browser DevTools → Console</strong> to see bt() mock logs for submission tests.</p>
+    <header>
+        <div class="logo">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm1 14.93V15a1 1 0 00-2 0v1.93A8.001 8.001 0 014.07 13H6a1 1 0 000-2H4.07A8.001 8.001 0 0111 4.07V6a1 1 0 002 0V4.07A8.001 8.001 0 0119.93 11H18a1 1 0 000 2h1.93A8.001 8.001 0 0113 16.93z"/>
+            </svg>
+        </div>
+        <div>
+            <h1>ZMP App — QA Test Page</h1>
+            <p>Digioh &times; Zeta Marketing Platform &mdash; internal QA environment</p>
+        </div>
+    </header>
+
+    <div class="card">
+        <div class="card-title">Before you start</div>
+        <div class="alert">
+            <div class="alert-icon">&#9432;</div>
+            <p>
+                Always append <code>?boxqamode</code> to the URL when testing.<br>
+                Example: <code>https://digioh-zeta-zmp.netlify.app/?boxqamode</code>
+            </p>
+        </div>
+        <ol class="steps">
+            <li>Open <strong>browser DevTools → Console</strong> tab before each test to capture <code>bt()</code> mock logs.</li>
+            <li>Trigger the Digioh box — the <strong>ZMP QA panel</strong> should appear at the bottom of the page.</li>
+            <li>Blue messages = working as expected &nbsp;·&nbsp; Yellow = advisory &nbsp;·&nbsp; Red = failure.</li>
+        </ol>
     </div>
 
-    <!-- Local config — copy config.example.js to config.js and fill in your account GUID -->
+    <div class="card">
+        <div class="card-title">Features under test</div>
+        <div class="features">
+            <div class="feature-chip"><span>Feature 1</span>Score-based interest preselect</div>
+            <div class="feature-chip"><span>Feature 1b</span>Top-3 fallback</div>
+            <div class="feature-chip"><span>Feature 2</span>URL + CSV interest override</div>
+            <div class="feature-chip"><span>Feature 3</span>bt('track') submission payload</div>
+            <div class="feature-chip"><span>Feature 4</span>PII anonymization</div>
+            <div class="feature-chip"><span>Feature 5</span>Form submit override</div>
+            <div class="feature-chip"><span>Feature 6</span>Data model validation</div>
+            <div class="feature-chip"><span>Feature 7</span>Regex field validation</div>
+            <div class="feature-chip"><span>Feature 8</span>DZMP retry cap (10s timeout)</div>
+        </div>
+    </div>
+
+    <footer>digioh-zeta-zmp &mdash; internal use only</footer>
+
+    <!-- Local config -->
     <script src="/config.js"></script>
 
     <!-- Digioh embed -->
