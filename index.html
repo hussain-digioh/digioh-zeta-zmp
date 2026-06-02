@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZMP App QA Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+            background: #f5f5f5;
+        }
+        .info-box {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 20px 24px;
+            margin-bottom: 30px;
+        }
+        h1 { color: #333; }
+        code {
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+        .tip { color: #0066cc; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="info-box">
+        <h1>ZMP App — QA Test Page</h1>
+        <p>
+            <span class="tip">Important:</span>
+            Always add <code>?boxqamode</code> to the URL before testing.<br>
+            Example: <code>https://your-site.netlify.app/?boxqamode</code>
+        </p>
+        <p>Open <strong>browser DevTools → Console</strong> to see bt() mock logs for submission tests.</p>
+    </div>
+
+    <!-- Local config — copy config.example.js to config.js and fill in your account GUID -->
+    <script src="/config.js"></script>
+
+    <!-- Digioh embed -->
+    <script type="text/javascript">
+        var __lo_site_id = window.ZMP_CONFIG.accountGuid;
+        (function() {
+            var wa = document.createElement('script');
+            wa.type = 'text/javascript';
+            wa.async = true;
+            wa.src = 'https://www.lightboxcdn.com/vendor/' + window.ZMP_CONFIG.accountGuid + '/lightbox_speed.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wa, s);
+        })();
+    </script>
+
+</body>
+</html>
