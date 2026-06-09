@@ -5,8 +5,8 @@ window.zt_wp = {
         data: {
             site_score: 47,
             top_products: {
-                interest_sidebar: 80,
-                interest_leave_intent: 90,
+                interest_sidebar: 60,
+                interest_leave_intent: 80,
                 interest_inline: 20
             }
         }
