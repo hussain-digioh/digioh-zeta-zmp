@@ -1,23 +1,25 @@
-// Mock Zeta ZMP environment for Digioh QA testing
-// Edit the scores below to change which interest gets preselected
+// ZMP Mock — add to WordPress page header or footer
 window.zt_wp = {
-    score: {
-        data: {
-            site_score: 47,
-            top_products: {
-                interest_sidebar: 60,
-                interest_leave_intent: 80,
-                interest_inline: 20
-            }
-        }
-    },
-    segment: ['SEGMENT_TEST_1']
+	segment: ['travel'],
+	score: {
+    	data: {
+        	site_score: 85,
+        	top_products: {
+            	'interest_leave_intent': 75,
+            	'interest_sidebar': 25,
+            	'interest_inline': 10
+        	}
+    	}
+	}
 };
-
-// Mock bt() — logs to browser console instead of sending to Zeta
 window.bt = function(action, eventType, payload) {
-    console.log(
-        '[ZMP bt mock] action=' + action + ' | type=' + eventType,
-        JSON.stringify(payload, null, 2)
-    );
+	console.log('[ZMP Mock] bt called:', action, eventType, payload);
 };
+// Poll for Digioh API then trigger ZMP init chain
+var _zmpMock = setInterval(function() {
+	if (window.DIGIOH_API && typeof window.DIGIOH_API.tryInitDigiohZmpApp === 'function') {
+    	clearInterval(_zmpMock);
+    	window.DIGIOH_API.zmp_started_init = false; // reset so first-call path runs
+        window.DIGIOH_API.tryInitDigiohZmpApp();
+	}
+}, 100);
