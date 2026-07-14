@@ -1,4 +1,5 @@
 // ZMP Mock — add to WordPress page header or footer
+/* FEATURE 8 TEST: zt_wp disabled to simulate Zeta never loading (DZMP 10s retry cap). Restore after testing.
 window.zt_wp = {
 	segment: ['travel'],
 	score: {
@@ -12,6 +13,7 @@ window.zt_wp = {
     	}
 	}
 };
+*/
 window.bt = function(action, eventType, payload) {
 	console.log('[ZMP Mock] bt called:', action, eventType, payload);
 };
